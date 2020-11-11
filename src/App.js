@@ -6,10 +6,15 @@ import Playground from './Playground.js'
 function App() {
   const [color, setColor] = useState(null);
 
+  function handleChangeComplete(color) = {
+    this.setState({ background: color.hex });
+  };
+
   return (
     <div className="App">
       <Playground />
-      <SketchPicker />
+      <SketchPicker color={ color }
+      onChangeComplete={ handleChangeComplete }/>
     </div>
   );
 }
