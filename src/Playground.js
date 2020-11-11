@@ -5,9 +5,7 @@ function Playground() {
     const [count, setCount] = useState(0);
 
     const [color, setColor] = useState(null);
-    useEffect(() => {
-        setColor(randomColor());
-    }, [count]);
+
 
     return (
         <div style={{ borderTop: `10px solid ${color}` }}>
