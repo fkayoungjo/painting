@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import logo from './logo.svg';
 import './App.css';
 import { SketchPicker } from 'react-color';
@@ -6,13 +7,12 @@ import Playground from './Playground.js'
 function App() {
   const [color, setColor] = useState(null);
 
-  function handleChangeComplete(color) = {
+  function handleChangeComplete(color)  {
     this.setState({ background: color.hex });
   };
 
   return (
-    <div className="App">
-      <Playground />
+    <div >
       <SketchPicker color={ color }
       onChangeComplete={ handleChangeComplete }/>
     </div>
