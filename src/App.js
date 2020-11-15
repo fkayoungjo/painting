@@ -8,7 +8,7 @@ function App() {
   const [color, setColor] = useState(null);
 
   function handleChangeComplete(color)  {
-    this.setState({ background: color.hex });
+    setColor(color.hex)
   };
 
   return (
