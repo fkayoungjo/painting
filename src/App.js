@@ -7,9 +7,6 @@ import Playground from './Playground.js'
 function App() {
   const [color, setColor] = useState(null);
 
-  function handleChangeComplete(color)  {
-    setColor(color.hex)
-  };
 
   return (
     <div >
