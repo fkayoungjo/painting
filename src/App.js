@@ -20,7 +20,8 @@ function App() {
    context.scale(2,2)
    context.lineCap = "round"
    context.strokeStyle = "black"
-   context.lineWidth = 5
+   context.lineWidth = 2
+   
    contextRef.current = context;
  }, [])
 
