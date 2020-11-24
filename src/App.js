@@ -6,7 +6,6 @@ function App() {
   const [color, setColor] = useState('#000000');
   const [lineSize, setLineSize] = useState(7);
   const [isDrawing, setIsDrawing] = useState(false)
-  
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
@@ -59,10 +58,11 @@ function App() {
   const draw = ({nativeEvent}) => {
     if(!isDrawing){
       return
-    }
+    }else {
     const {offsetX, offsetY} = nativeEvent;
     contextRef.current.lineTo(offsetX, offsetY)
     contextRef.current.stroke()
+  }
   }
 
 
