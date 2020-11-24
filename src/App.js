@@ -1,18 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from './logo.svg';
-import './App.css';
 import { SketchPicker } from 'react-color';
-import Playground from './Playground.js'
+
 
 function App() {
   const [color, setColor] = useState('#000000');
+  const [lineSize, setLineSize] = useState(7);
+  const [isDrawing, setIsDrawing] = useState(false)
+  
+  const canvasRef = useRef(null)
+  const contextRef = useRef(null)
+
 
   function handleChangeComplete(color)  {
     setColor(color.hex)
   };
-  const canvasRef = useRef(null)
-  const contextRef = useRef(null)
-  const [isDrawing, setIsDrawing] = useState(false)
+
+  function handleLineSize(event) {
+    setLineSize(event.target.value);
+  }
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -24,10 +29,20 @@ function App() {
     const context = canvas.getContext("2d")
     context.scale(2,2)
     context.lineCap = "round"
-    context.strokeStyle = color
-    context.lineWidth = 5
     contextRef.current = context;
   }, [] )
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d")
+    context.strokeStyle = color
+  }, [color] )
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d")
+    context.lineWidth = lineSize
+  }, [lineSize] )
 
   const startDrawing = ({nativeEvent}) => {
     const {offsetX, offsetY} = nativeEvent;
@@ -56,6 +71,16 @@ function App() {
     <div >
       <SketchPicker color={ color }
       onChangeComplete={ handleChangeComplete }/>
+      <label>
+         <input
+           id="typeinp"
+           type="range"
+           min="0" max="20"
+           value={lineSize}
+           onChange={handleLineSize}
+           step="1"/>
+         {lineSize}
+       </label>
       <canvas
         onMouseDown={startDrawing}
         onMouseUp={finishDrawing}
