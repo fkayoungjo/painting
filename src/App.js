@@ -82,6 +82,7 @@ function App() {
          {lineSize}
        </label>
       <canvas
+
         onMouseDown={startDrawing}
         onMouseUp={finishDrawing}
         onMouseMove={draw}
