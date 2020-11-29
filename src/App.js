@@ -52,7 +52,7 @@ function App() {
 
   const finishDrawing = () => {
    contextRef.current.closePath()
-   setIsDrawing(true)
+   setIsDrawing(false)
   }
 
   const draw = ({nativeEvent}) => {
